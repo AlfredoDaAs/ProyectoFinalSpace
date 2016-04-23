@@ -1,17 +1,33 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour {
+public class LevelManager : MonoBehaviour
+{
 
-	public void LoadLevel(string name){
-		Debug.Log ("Loading level: " + name);
-		SceneManager.LoadScene (name);
+	public float loadNextLevelAfter = 3;
+
+	void Start ()
+	{
+		if (loadNextLevelAfter > 0) {
+			Invoke ("LoadNextLevel", loadNextLevelAfter);
+		}
 	}
 
-	public void QuitRequest(){
-		Debug.Log ("Quit requested!");
+	public void LoadLevel (string level)
+	{
+		Debug.Log ("Loading level: " + level);
+		SceneManager.LoadScene (level);
+	}
+
+	public void QuitRequest ()
+	{
+		Debug.Log ("Quit game.");
 		Application.Quit ();
+	}
+
+	public void LoadNextLevel ()
+	{
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
 	}
 }
