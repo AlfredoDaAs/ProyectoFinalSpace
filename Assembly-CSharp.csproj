@@ -45,8 +45,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\scripts\Colliders.cs" />
+     <Compile Include="Assets\scripts\Enemy.cs" />
+     <Compile Include="Assets\scripts\EnemySpawner.cs" />
      <Compile Include="Assets\scripts\LevelManager.cs" />
+     <Compile Include="Assets\scripts\MeteoriteSpawner.cs" />
      <Compile Include="Assets\scripts\Player.cs" />
+     <Compile Include="Assets\scripts\Position.cs" />
+     <Compile Include="Assets\scripts\Tiling.cs" />
+     <Compile Include="Assets\scripts\shotScript.cs" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
