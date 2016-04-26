@@ -8,17 +8,17 @@ public class Player : MonoBehaviour
 	private LevelManager levelManager;
     private Quaternion rotation;
     public GameObject shot;
+    public GameObject explosion;
     public AudioClip shotSound;
 
     public float speedShot = 10f;
     private float movingSpeed = 2f;
-    float speed = 10f;
-	float maxX, minX;
+    private float speed = 10f;
+	private float maxX, minX;
+    float score = 100f;
 
-	
-
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
 	{
         levelManager = GameObject.FindObjectOfType<LevelManager>();
         float distance = transform.position.z - Camera.main.transform.position.z;
@@ -26,7 +26,9 @@ public class Player : MonoBehaviour
 		Vector3 rightMost = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, distance));
 		minX = leftMost.x;
 		maxX = rightMost.x;
-	}	
+
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
+    }	
 	
 	void Awake ()
 	{
@@ -55,4 +57,20 @@ public class Player : MonoBehaviour
 		}
 		transform.rotation = rotation;
 	}
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        playerExplosion();   
+        Destroy(gameObject);
+    }
+
+
+    void playerExplosion() {
+        Instantiate(explosion, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);
+    }    
+
+    public float GetScore()
+    {
+        return score;
+    }
 }

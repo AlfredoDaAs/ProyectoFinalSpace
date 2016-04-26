@@ -81,8 +81,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8fca4ba21b6d44685b5b4f7fa696b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 500
   shot: {fileID: 199672, guid: af46841bd7b453f41b8dae439e0d5e4b, type: 2}
+  fire: {fileID: 129960, guid: 6577fba4ae9f9084ab55b6ead1eabc45, type: 2}
+  health: 500
   speedShot: 10
 --- !u!212 &21203946
 SpriteRenderer:

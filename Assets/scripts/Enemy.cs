@@ -3,12 +3,14 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
-    public float health;
     GameObject[] enemies;
     public GameObject shot;
-    public float speedShot = 6.0f;
-    float shotsPerSecond = 0.3f;
+    public GameObject fire;
+    public float health;
+    public float speedShot = 4.0f;
+    float shotsPerSecond = 0.1f;
     int enemyCounter;
+    
 
     // Use this for initialization
     void Start () {
@@ -41,7 +43,8 @@ public class Enemy : MonoBehaviour {
             health = health - laser.damage;
             if (health <= 0)
             {
-                Destroy(gameObject, 0.0f);
+                enemyExplosion();
+                Destroy(gameObject, 0.0f);                
                 if (enemyCounter == 0)
                 {
                     EnemySpawner spawner = gameObject.GetComponent<EnemySpawner>();
@@ -58,5 +61,9 @@ public class Enemy : MonoBehaviour {
         GameObject shotClone = (GameObject)Instantiate(shot, new Vector3(transform.position.x+1, transform.position.y, 0), Quaternion.identity);
         shotClone.GetComponent<Rigidbody2D>().velocity = new Vector2(-speedShot, 0.0f);
         shotClone.transform.Rotate(new Vector3(0, 0, 90));
+    }
+
+    void enemyExplosion() {
+        Instantiate(fire, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);
     }
 }
